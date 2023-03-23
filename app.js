@@ -4,15 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 // Add your instrumentation key or use the APPLICATIONINSIGHTSKEY environment variable on your production machine to start collecting data.
 var ai = require('applicationinsights');
-ai.setup(process.env.APPLICATIONINSIGHTSKEY || 'your_instrumentation_key').start();
+ai.setup(process.env.APPLICATIONINSIGHTSKEY || 'InstrumentationKey=02ec94a5-bb19-4e12-ac13-de725e7a16b6;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/').start();
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 var testRouter = require('./routes/test')
 
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
